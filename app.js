@@ -13,13 +13,28 @@ var command = argv._[0];
 console.log('yargs', argv);
 
 if(command === 'add'){
-	notes.addNote(argv.title, argv.body);
+	var note = notes.addNote(argv.title, argv.body);
+	if(note !== undefined){
+		console.log("Note added");
+		notes.logNote(note);
+
+	}else{
+		console.log("note not added");
+	}
 }else if(command === 'list'){
 	notes.getAll();
 }else if(command === 'read'){
-	notes.readNote(argv.title);
+	var note = notes.readNote(argv.title);
+	if(note){
+		console.log("Note found");
+		notes.logNote(note);
+	}else{
+		console.log('Note with title -' + argv.title + 'not found!');
+	}
 }else if(command === 'remove'){
-	notes.delNote(argv.title);
+	var noteDel = notes.delNote(argv.title);
+	var msg = noteDel ? 'Note was removed' : 'No note found';
+	console.log(msg);
 }
 else{
 	console.log('Command not recognized');
