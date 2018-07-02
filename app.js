@@ -22,7 +22,9 @@ if(command === 'add'){
 		console.log("note not added");
 	}
 }else if(command === 'list'){
-	notes.getAll();
+	allNotes = notes.getAll();
+	console.log(`Printing ${allNotes.length} note(s):`);
+	allNotes.forEach((note) => notes.logNote(note));
 }else if(command === 'read'){
 	var note = notes.readNote(argv.title);
 	if(note){
