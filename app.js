@@ -33,7 +33,7 @@ const argv = yargs
 
 var command = argv._[0];
 // console.log('process', command);
-// console.log('yargs', argv);
+console.log(command);
 
 if(command === 'add'){
 	var note = notes.addNote(argv.title, argv.body);
